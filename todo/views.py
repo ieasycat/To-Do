@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-
 from todo.business_logic import add_edit, up_down
 from todo.models import ToDo, Priority
 from todo.forms import ToDoForm
