@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}{% endblock %}
+    </title>
+    <style>
+        table {
+            table-layout: fixed;
+            width:50%
+        }
+        td {
+            float: inherit;
+            word-wrap:break-word;
+            text-align: center;
+        }
+        button {
+            cursor: pointer;
+        }
+        .edit {
+            float: left;
+            display: block;
+            margin: 3px;
+        }
+
+        .del {
+            float: left;
+            display: block;
+            margin: 3px;
+        }
+        .up {
+            float: left;
+            display: block;
+            margin: 3px;
+        }
+        .down {
+            float: left;
+            display: block;
+            margin: 3px;
+        }
+        .status {
+            float: left;
+            display: block;
+            margin: 3px;
+        }
+        tr.gray {
+            background-color: #808080;
+        }
+    </style>
+</head>
+<body>
+    {% block content %}{% endblock %}
+</body>
+</html>

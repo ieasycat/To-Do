@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block title %} Main Page {% endblock %}
+{% block content %}
+<form action="" method="get">
+    <div align="center">
+        <p>Your to-do list</p>
+        <table border=1>
+            <tr>
+                <td>Task</td>
+                <td>Date of creation</td>
+                <td>Priority</td>
+                <td>Status</td>
+                <td>Options</td>
+            </tr>
+            {% for todo in todos %}
+            {% if todo.status == 'Done' %}
+            <tr class="gray">
+                <td>{{ todo.name }}</td>
+                <td>{{ todo.date_create }}</td>
+                <td>{{ todo.priority.name }}</td>
+                <td>{{ todo.status }}</td>
+                <td>
+                    <div class="edit">
+                        <form action="{% url 'edit_todo' todo.id %}" method="post">
+                            <button>Change</button>
+                            {% csrf_token %}
+                        </form>
+                    </div>
+                    <div class="del">
+                        <form action="{% url 'delete_todo' todo.id %}" method="post">
+                            <button>Delete</button>
+                            {% csrf_token %}
+                        </form>
+                    </div>
+                    <div class="up">
+                        <form action="{% url 'up' todo.position %}" method="get">
+                            <button>Up</button>
+                        </form>
+                    </div>
+                    <div class="down">
+                        <form action="{% url 'down' todo.position %}" method="get">
+                            <button>Down</button>
+                        </form>
+                    </div>
+                    <div class="status">
+                        <form action="{% url 'done_todo' todo.id %}" method="get">
+                            <button>Complete</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td>{{ todo.name }}</td>
+                <td>{{ todo.date_create }}</td>
+                <td>{{ todo.priority.name }}</td>
+                <td>{{ todo.status }}
+                <td>
+                    <div class="edit">
+                        <form action="{% url 'edit_todo' todo.id %}" method="post">
+                            <button>Change</button>
+                            {% csrf_token %}
+                        </form>
+                    </div>
+                    <div class="del">
+                        <form action="{% url 'delete_todo' todo.id %}" method="post">
+                            <button>Delete</button>
+                            {% csrf_token %}
+                        </form>
+                    </div>
+                    <div class="up">
+                        <form action="{% url 'up' todo.position %}" method="get">
+                            <button>Up</button>
+                        </form>
+                    </div>
+                    <div class="down">
+                        <form action="{% url 'down' todo.position %}" method="get">
+                            <button>Down</button>
+                        </form>
+                    </div>
+                    <div class="status">
+                        <form action="{% url 'done_todo' todo.id %}" method="get">
+                            <button>Complete</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </table>
+        <p></p>
+        <div align="center">
+            <form action="{% url 'add_todo' %}" method="post">
+                <button>Add ToDo</button>
+                {% csrf_token %}
+            </form>
+            <p></p>
+            <form action="{% url 'reset' %}" method="get">
+                <button>Reset</button>
+            </form>
+        </div>
+    </div>
+</form>
+{% endblock %}
