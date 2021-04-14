@@ -1,10 +1,13 @@
 from django import forms
-from todo.models import Priority
-
-
-PRIORITY_CHOISE = ((i.id, i.name) for i in Priority.objects.all())
 
 
 class ToDoForm(forms.Form):
     name = forms.CharField(max_length=60)
-    priority = forms.ChoiceField(choices=PRIORITY_CHOISE)
+    priority = forms.ChoiceField(
+        choices=()
+    )
+
+    def __init__(self, *args, **kwargs):
+        priority_choices = kwargs.pop('priority_choices', ())
+        super().__init__(*args, **kwargs)
+        self.fields['priority'].choices = priority_choices

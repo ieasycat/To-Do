@@ -27,19 +27,24 @@ def reset(request, check_todo=None):
     return redirect('display_main')
 
 
-def add_todo(request):
-    context = {
-        'form': ToDoForm()
+def my_form(request):
+    form_list = {
+        'form': ToDoForm(priority_choices=((i.id, i.name) for i in Priority.objects.all()))
     }
+    form_give = ToDoForm(request.POST, priority_choices=((i.id, i.name) for i in Priority.objects.all()))
+    return form_list, form_give
+
+
+def add_todo(request):
+    context, form = my_form(request)
 
     if request.POST:
-        form = ToDoForm(request.POST)
         if form.is_valid():
             name, priority = add_edit(form)
 
             todo = ToDo.objects.create(
                 name=name,
-                priority=Priority.objects.get(id=priority)
+                priority=Priority.objects.get(id=priority),
             )
 
             reset(request, todo)
@@ -50,17 +55,12 @@ def add_todo(request):
 
 
 def edit_todo(request, todo_id):
+    context, form = my_form(request)
     todo = ToDo.objects.get(id=todo_id)
 
-    context = {
-        'form': ToDoForm()
-    }
-
     if request.POST:
-        form = ToDoForm(request.POST)
-
         if form.is_valid():
-            name, priority = add_edit(request, form)
+            name, priority = add_edit(form)
 
             todo.name = name
             todo.priority = Priority.objects.get(id=priority)

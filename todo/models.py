@@ -14,11 +14,11 @@ class ToDo(models.Model):
     position = models.IntegerField(default=0)
     name = models.CharField(max_length=60)
     date_create = models.DateField(auto_now_add=True)
-    priority = models.OneToOneField(
+    priority = models.ForeignKey(
         'Priority',
         null=True,
         on_delete=models.SET_NULL,
-        related_name='todo'
+        related_name='todos'
     )
     status = models.CharField(max_length=10, default='In process')
 
