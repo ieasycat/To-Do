@@ -14,7 +14,7 @@ class ToDo(models.Model):
     position = models.IntegerField(default=0)
     name = models.CharField(max_length=60)
     date_create = models.DateField(auto_now_add=True)
-    priority = models.ForeignKey(
+    todo_priority = models.ForeignKey(
         Priority,
         null=True,
         on_delete=models.SET_NULL,
