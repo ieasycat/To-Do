@@ -110,3 +110,15 @@ def done_todo(request, todo_id):
     todo.status = 'Done'
     todo.save()
     return redirect('display_main')
+
+
+def filter_priority(request):
+    button = request.POST['button']
+    if 'H-L' in button:
+        todos_order = ToDo.objects.order_by('-priority')
+    else:
+        todos_order = ToDo.objects.order_by('priority')
+    context = {
+        'todos': todos_order
+        }
+    return render(request, 'main_page.html', context)

@@ -1,13 +1,22 @@
 {% extends "base.html" %}
 {% block title %} Main Page {% endblock %}
 {% block content %}
+<!--{% csrf_token %}-->
     <div align="center">
         <p>Your to-do list</p>
         <table border=1>
             <tr>
                 <td>Task</td>
                 <td>Date of creation</td>
-                <td>Priority</td>
+                <td>
+                    <form method="post" action="filter_priority">
+
+                        <button name="button" value="H-L">H-L</button>
+                            Priority
+                        <button name="button" value="L-H">L-H</button>
+                        {% csrf_token %}
+                    </form>
+                </td>
                 <td>Status</td>
                 <td>Options</td>
             </tr>
