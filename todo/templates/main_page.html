@@ -57,6 +57,114 @@
                     </div>
                 </td>
             </tr>
+            {% elif todo.priority.name == 'Low' %}
+            <tr class="green">
+                <td>{{ todo.name }}</td>
+                <td>{{ todo.date_create }}</td>
+                <td>{{ todo.priority.name }}</td>
+                <td>{{ todo.status }}</td>
+                <td>
+                    <div class="edit">
+                        <form action="{% url 'edit_todo' todo.id %}" method="post">
+                            <button>Change</button>
+                            {% csrf_token %}
+                        </form>
+                    </div>
+                    <div class="del">
+                        <form action="{% url 'delete_todo' todo.id %}" method="post">
+                            <button>Delete</button>
+                            {% csrf_token %}
+                        </form>
+                    </div>
+                    <div class="up">
+                        <form action="{% url 'up' todo.position %}" method="get">
+                            <button>Up</button>
+                        </form>
+                    </div>
+                    <div class="down">
+                        <form action="{% url 'down' todo.position %}" method="get">
+                            <button>Down</button>
+                        </form>
+                    </div>
+                    <div class="status">
+                        <form action="{% url 'done_todo' todo.id %}" method="get">
+                            <button>Complete</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            {% elif todo.priority.name == 'Medium' %}
+            <tr class="orange">
+                <td>{{ todo.name }}</td>
+                <td>{{ todo.date_create }}</td>
+                <td>{{ todo.priority.name }}</td>
+                <td>{{ todo.status }}</td>
+                <td>
+                    <div class="edit">
+                        <form action="{% url 'edit_todo' todo.id %}" method="post">
+                            <button>Change</button>
+                            {% csrf_token %}
+                        </form>
+                    </div>
+                    <div class="del">
+                        <form action="{% url 'delete_todo' todo.id %}" method="post">
+                            <button>Delete</button>
+                            {% csrf_token %}
+                        </form>
+                    </div>
+                    <div class="up">
+                        <form action="{% url 'up' todo.position %}" method="get">
+                            <button>Up</button>
+                        </form>
+                    </div>
+                    <div class="down">
+                        <form action="{% url 'down' todo.position %}" method="get">
+                            <button>Down</button>
+                        </form>
+                    </div>
+                    <div class="status">
+                        <form action="{% url 'done_todo' todo.id %}" method="get">
+                            <button>Complete</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            {% elif todo.priority.name == 'High' %}
+            <tr class="red">
+                <td>{{ todo.name }}</td>
+                <td>{{ todo.date_create }}</td>
+                <td>{{ todo.priority.name }}</td>
+                <td>{{ todo.status }}</td>
+                <td>
+                    <div class="edit">
+                        <form action="{% url 'edit_todo' todo.id %}" method="post">
+                            <button>Change</button>
+                            {% csrf_token %}
+                        </form>
+                    </div>
+                    <div class="del">
+                        <form action="{% url 'delete_todo' todo.id %}" method="post">
+                            <button>Delete</button>
+                            {% csrf_token %}
+                        </form>
+                    </div>
+                    <div class="up">
+                        <form action="{% url 'up' todo.position %}" method="get">
+                            <button>Up</button>
+                        </form>
+                    </div>
+                    <div class="down">
+                        <form action="{% url 'down' todo.position %}" method="get">
+                            <button>Down</button>
+                        </form>
+                    </div>
+                    <div class="status">
+                        <form action="{% url 'done_todo' todo.id %}" method="get">
+                            <button>Complete</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
             {% else %}
             <tr>
                 <td>{{ todo.name }}</td>
