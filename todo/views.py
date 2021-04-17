@@ -72,9 +72,15 @@ def edit_todo(request, todo_id):
 
 
 def delete_todo(request, todo_id):
+    todos = ToDo.objects.all()
     if request.POST:
         todo = ToDo.objects.get(id=todo_id)
+        position = todo.position
         todo.delete()
+        for todo in todos:
+            if todo.position > position:
+                todo.position -= 1
+                todo.save()
 
     return redirect('display_main')
 
