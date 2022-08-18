@@ -1,13 +1,28 @@
-# Вэб приложение To Do
+# To-Do
 
-<p>Приложение позволяет создать задачу, изменять, удалять, поднимать, опускать, помечать, как выполненную, а так же есть фильтрация по приоритету.</p>
-<p>Александр, сильно не пинайте, особенно за тесты, я не понял как проверить все, если можно, был бы рад разбору :pill:</p>
+An application with a list of tasks. Main fitches:
+  - Create a task.
+  - Change a task.
+  - Delete a task.
+  - Raise or lower a task.
+  - Mark a task as completed.
+  - Ffilter a task by priority.
 
-## Установка
+This application is installed on Heroku.
 
-<p>:one: Для того, чтобы скачать репозиторий себе на ПК, выполняем команду git@github.com:ieasycat/project2.git</p>
-<p>:two: После нужно установить все фраемворки, для работы. Выполянем python -m pip install -r requirements.txt</p>
+Stack: Django, SQLite
 
-## Мелочи
+## Install
 
-[Проект на хероку](https://tms41-todo.herokuapp.com)
+- virtualenv -p python3 .venv
+- source .venv/bin/activate
+- git@github.com:ieasycat/To-Do.git
+- python -m pip install -r requirements.txt
+
+## Launching the application
+
+- python manage.py runserver
+
+## Heroku
+
+[Heroku](https://tms41-todo.herokuapp.com/)
