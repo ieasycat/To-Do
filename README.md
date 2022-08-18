@@ -8,7 +8,7 @@ An application with a list of tasks. Main fitches:
   - Mark a task as completed.
   - Ffilter a task by priority.
 
-This application is installed on Heroku.
+This application is deployed on Heroku.
 
 Stack: Django, SQLite
 
